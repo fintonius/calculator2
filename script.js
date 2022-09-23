@@ -13,6 +13,10 @@
 //  - the answer to equation displayed
 //
 // step 1: allow user to input numbers through buttons & keyboard
+// step 2: pressing operator button: 
+//	- passes number to object||variable?
+//	- passes operatorID to object||variable?
+//	- clears numberDisplay
 
 const numberDisplay = document.querySelector('.number-display');
 numberDisplay.textContent = '';
@@ -30,30 +34,24 @@ document.querySelectorAll('.number-button, .operator-button').forEach(btn => {
 	btn.addEventListener('click', numPress)
 });
 
-//can I test for numbers || operators but ALSO pass either btn//click .ids to display || call operator?!?
-//should keyboard events call one function and click events call another?!
-//OR is it one event for numbers and one event for operators?
-//OR OR does the one function first check if it was operator or number then run relevant sub-function?!?!?!?!?
 function numPress(e) {
 	//check to see what sort of event called function - click or keydown
-	
 	if (e.type == 'click') {
-		operators.test(e.target.id) ? console.log('a') : numberDisplay.textContent += e.target.id;
-	} else {
-		numbers.test(e.key) ? numberDisplay.textContent += e.key : console.log('b');
-	}
-	// if (numbers.test(e.key)) {
-	// 	numberDisplay.textContent += e.key;
-	// } else if (operators.test(e.target.id)) {
-	// 	console.log('woohoo!');
-	// } 
-	// else if (numbers.test(e.target.id)) {
-	// 	numberDisplay.textContent += e.target.id;
-	// } else {
-		return
-	};
+		numbers.test(e.target.id) ? numberDisplay.textContent += e.target.id : equation(e);
+	} else if (e.type == 'keydown') { //makes sure unwanted keypresses are being ignored - PROBABLY BETTER WAY OF DOING THIS?!
+		if (numbers.test(e.key)) {
+			numberDisplay.textContent += e.key;
+		 } else if (operators.test(e.key)) {
+			 equation(e);
+		 } else {
+			return
+		 };
+	}; 
+};
 // };
-
+function equation(e) {
+	console.log(e)
+}
 //pass
 
 //takes user operator input via keyboard and clicking calculator buttons
