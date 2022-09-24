@@ -17,31 +17,34 @@
 //	- passes number to object||variable?
 //	- passes operatorID to object||variable?
 //	- clears numberDisplay
+// step 3: pressing equals button:
+//	- passes number to object||variable?
+//	- calls function to solve equation
+//	- passes answer to numberDisplay
 
 const numberDisplay = document.querySelector('.number-display');
-numberDisplay.textContent = '';
-
-
-//alternative to the Wes Bos drum-kit approach, which I still quite like :) :
-//  listen for keydown, if it's keyCode/id(?) matches regexListA then call A-function,
-//  if it matches regexListB call B-function, otherwise return.
+function clearDisplay() {
+	numberDisplay.textContent = '';
+};
 //NEED TO REMEMBER TO ONLY CHECK/PASS '.' ONCE PER NUMBER!
 const numbers = /[1234567890.]/;
 const operators = /[-+=\/]/
 
-//takes user number input via keyboard & calculator button-clicks & passes to calculatorDisplay
+//I feel like there's something I'm missing here... the problem for me is how to reconcile
+//being able to access properties of either universally rather than needing
+//e.target.id for clickEvents and e.id for keyEvents...
 window.addEventListener('keydown', numPress);
+
 document.querySelectorAll('.number-button, .operator-button').forEach(btn => {
-	btn.addEventListener('click', numPress)
+	btn.addEventListener('click', numClick)
 });
 
 //stores the numbers & operator as they are entered then calculates answer when '=' is clicked/pressed
-
-const problem = {
+const equation = {
   num1: 0,
-  num2 : 0,
+  num2: 0,
   operator : '',
-  equation : function() {
+  solution : function() {
 		switch(this.operator) {
 			case '+':
 				return this.num1 + this.num2;
@@ -60,31 +63,68 @@ const problem = {
 			}   
   }
 };
+console.log(!equation.num1)
 
-function numPress(e) {
-	if (e.type == 'click') { 	//check to see what sort of event called function - click or keydown
-		if (numbers.test(e.target.id)) {
+function clearEquation() {
+	equation.num1 = 0;
+	equation.num2 = 0;
+	equation.operator = '';
+}
+
+//only alternative I can see is 2 functions: numPress() & numClick()
+
+function numClick(e) { //handles click events
+	if (e.target.id == '=') {
+		equation.num2 = +numberDisplay.textContent;
+		numberDisplay.textContent = equation.solution();
+	} else if (numbers.test(e.target.id)) { 
 			numberDisplay.textContent += e.target.id;
-		 } else {
-			problem['num1'] = +numberDisplay.textContent;
-			problem['num2'] = +numberDisplay.textContent;
-			problem['operator'] = e.target.id;
-			console.log(problem.equation());
-		 }
-	} else { 
-		if (numbers.test(e.key)) {
-			numberDisplay.textContent += e.key;
-		 } else if (operators.test(e.key)) {
-			 problem['num1'] = +numberDisplay.textContent;
-			 problem['num2'] = +numberDisplay.textContent;
-			 problem['operator'] = e.key;
-			 console.log(problem.equation());
-		 } else {
-			return //makes sure unwanted keypresses are being ignored 
-		 };
-	}; 
+	} else {
+			equation.num1 = +numberDisplay.textContent;
+			equation.operator = e.target.id;			
+			clearDisplay();
+		};
 };
 
+function numPress(e) { //handles keydown events
+	if ((e.key == '=') || (e.key == 'Enter')) {
+		equation.num2 = +numberDisplay.textContent;
+		numberDisplay.textContent = equation.solution();
+	} else if (numbers.test(e.key)) { 
+			numberDisplay.textContent += e.key;
+	} else if (operators.test(e.key)) {
+			equation.num1 = +numberDisplay.textContent;
+			equation.operator = e.key;
+			console.log(!equation.num1);
+			clearDisplay();
+	} else {
+			return //makes sure unwanted keypresses are being ignored 
+	};
+}
 
-
-
+//OR, ONE FUNCTION TO RULE THEM ALL! this was getting too messy and also basically was the same
+//code repeated so it made little sense to try mash it all into 1 function when 2 was cleaner
+// function numPress(e) {
+// 	if (e.type == 'click') { 	//check to see what sort of event called function - click or keydown
+// 			if (e.target.id == '=') {
+// 				console.log('test')
+// 			}
+// 			 else if (numbers.test(e.target.id)) { //handles click events
+// 				numberDisplay.textContent += e.target.id;
+// 			 } else {
+// 				equation['num1'] = +numberDisplay.textContent;
+// 				equation['operator'] = e.target.id;
+// 				clearDisplay();
+// 			}
+// 		} else { 
+// 			if (numbers.test(e.key)) { //handles keydown events
+// 				numberDisplay.textContent += e.key;
+// 			 } else if (operators.test(e.key)) {
+// 				equation['num1'] = +numberDisplay.textContent;
+// 				equation['operator'] = e.key;
+// 				clearDisplay();
+// 			 } else {
+// 				return //makes sure unwanted keypresses are being ignored 
+// 			 };
+// 		}; 
+// 	};
