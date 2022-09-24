@@ -21,6 +21,7 @@
 const numberDisplay = document.querySelector('.number-display');
 numberDisplay.textContent = '';
 
+
 //alternative to the Wes Bos drum-kit approach, which I still quite like :) :
 //  listen for keydown, if it's keyCode/id(?) matches regexListA then call A-function,
 //  if it matches regexListB call B-function, otherwise return.
@@ -34,24 +35,56 @@ document.querySelectorAll('.number-button, .operator-button').forEach(btn => {
 	btn.addEventListener('click', numPress)
 });
 
+//stores the numbers & operator as they are entered then calculates answer when '=' is clicked/pressed
+
+const problem = {
+  num1: 0,
+  num2 : 0,
+  operator : '',
+  equation : function() {
+		switch(this.operator) {
+			case '+':
+				return this.num1 + this.num2;
+				break;
+			case '-':
+				return this.num1 - this.num2;
+				break;
+			case '/':
+				return this.num1 / this.num2;
+				break;
+			case '*':
+				return this.num1 * this.num2;
+				break;
+			default:
+				return `something's wrong`;
+			}   
+  }
+};
+
 function numPress(e) {
-	//check to see what sort of event called function - click or keydown
-	if (e.type == 'click') {
-		numbers.test(e.target.id) ? numberDisplay.textContent += e.target.id : equation(e);
-	} else if (e.type == 'keydown') { //makes sure unwanted keypresses are being ignored - PROBABLY BETTER WAY OF DOING THIS?!
+	if (e.type == 'click') { 	//check to see what sort of event called function - click or keydown
+		if (numbers.test(e.target.id)) {
+			numberDisplay.textContent += e.target.id;
+		 } else {
+			problem['num1'] = +numberDisplay.textContent;
+			problem['num2'] = +numberDisplay.textContent;
+			problem['operator'] = e.target.id;
+			console.log(problem.equation());
+		 }
+	} else { 
 		if (numbers.test(e.key)) {
 			numberDisplay.textContent += e.key;
 		 } else if (operators.test(e.key)) {
-			 equation(e);
+			 problem['num1'] = +numberDisplay.textContent;
+			 problem['num2'] = +numberDisplay.textContent;
+			 problem['operator'] = e.key;
+			 console.log(problem.equation());
 		 } else {
-			return
+			return //makes sure unwanted keypresses are being ignored 
 		 };
 	}; 
 };
-// };
-function equation(e) {
-	console.log(e)
-}
-//pass
 
-//takes user operator input via keyboard and clicking calculator buttons
+
+
+
