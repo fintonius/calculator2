@@ -22,7 +22,7 @@
 //	- calls function to solve equation
 //	- passes answer to numberDisplay
 
-const numberDisplay = document.querySelector('.number-display');
+let numberDisplay = document.querySelector('.number-display');
 function clearDisplay() {
 	numberDisplay.textContent = '';
 };
@@ -86,12 +86,12 @@ function numClick(e) { //handles click events
 		};
 };
 
-function numPress(e) { //handles keydown events
+function numPress(e) {  //handles keydown events
 	if ((e.key == '=') || (e.key == 'Enter')) {
 		equation.num2 = +numberDisplay.textContent;
-		numberDisplay.textContent = equation.solution();
+		numberDisplay.textContent  = equation.solution();
 	} else if (numbers.test(e.key)) { 
-			numberDisplay.textContent += e.key;
+		numberDisplay.textContent += e.key;
 	} else if (operators.test(e.key)) {
 			equation.num1 = +numberDisplay.textContent;
 			equation.operator = e.key;
