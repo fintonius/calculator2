@@ -59,7 +59,7 @@ const equation = {
 				return this.num1 * this.num2;
 				break;
 			default:
-				return `something's wrong`;
+				return ``;
 			}   
   }
 };
@@ -77,6 +77,7 @@ function numClick(e) { //handles click events
 	if (e.target.id == '=') {
 		equation.num2 = +numberDisplay.textContent;
 		numberDisplay.textContent = equation.solution();
+		clearEquation();
 	} else if (numbers.test(e.target.id)) { 
 			numberDisplay.textContent += e.target.id;
 	} else {
