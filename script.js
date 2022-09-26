@@ -21,6 +21,7 @@
 //	- passes number to object||variable?
 //	- calls function to solve equation
 //	- passes answer to numberDisplay
+// step 4: clear display of equation answer when new number submitted by user
 
 let numberDisplay = document.querySelector('.number-display');
 function clearDisplay() {
@@ -69,7 +70,6 @@ function clearEquation() {
 	equation.num2 = 0;
 	equation.operator = '';
 }
-//only alternative I can see is 2 functions: numPress() & numClick()
 
 function numClick(e) { //handles click events
 	if (e.target.id == '=') {
@@ -128,3 +128,5 @@ function numPress(e) { //handles keydown events
 // 			 };
 // 		}; 
 // 	};
+
+//only alternative I can see is 2 functions: numPress() & numClick()
