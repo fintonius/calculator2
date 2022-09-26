@@ -28,7 +28,7 @@ function clearDisplay() {
 };
 //NEED TO REMEMBER TO ONLY CHECK/PASS '.' ONCE PER NUMBER!
 const numbers = /[1234567890.]/;
-const operators = /[-+=\/]/
+const operators = /[*-+=\/]/
 
 //I feel like there's something I'm missing here... the problem for me is how to reconcile
 //being able to access properties of either universally rather than needing
@@ -63,14 +63,12 @@ const equation = {
 			}   
   }
 };
-console.log(!equation.num1)
 
 function clearEquation() {
 	equation.num1 = 0;
 	equation.num2 = 0;
 	equation.operator = '';
 }
-
 //only alternative I can see is 2 functions: numPress() & numClick()
 
 function numClick(e) { //handles click events
@@ -87,10 +85,11 @@ function numClick(e) { //handles click events
 		};
 };
 
-function numPress(e) {  //handles keydown events
+function numPress(e) { //handles keydown events
 	if ((e.key == '=') || (e.key == 'Enter')) {
 		equation.num2 = +numberDisplay.textContent;
 		numberDisplay.textContent  = equation.solution();
+		clearEquation();
 	} else if (numbers.test(e.key)) { 
 		numberDisplay.textContent += e.key;
 	} else if (operators.test(e.key)) {

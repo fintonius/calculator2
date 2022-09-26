@@ -10,7 +10,7 @@ body{
 	display: flex;
 	justify-content: center;
 	height: 100vh;
-	background-color: lightblue;
+	background-color:bisque;
 }
 
 .calculator{
@@ -21,10 +21,10 @@ body{
 	width: 350px;
 	padding: 20px;
 	border: 2px solid rgb(59, 133, 161);
-	border-bottom: 4px solid rgb(59, 133, 161);;
+	border-bottom: 15px solid rgb(49, 114, 138);
 	border-radius: 25px;
 	background-color: lightskyblue;
-	box-shadow: 0px 15px rgb(49, 114, 138);
+	box-shadow: 10px 15px 5px 0px rgb(240, 194, 138);
 }
 
 .top-row{
@@ -86,7 +86,7 @@ body{
 	justify-content: space-around;
 }
 
-.button{	
+.button{
 	background-color:paleturquoise;
 	font-size: 30px;
 	display: flex;
@@ -116,4 +116,8 @@ body{
 .operator-button{
 	box-shadow: 0px 3px darkblue;
 	border: 2px solid blue;
+}
+
+.on{
+	color: orangered;
 }
