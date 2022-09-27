@@ -30,6 +30,7 @@ function clearDisplay() {
 //NEED TO REMEMBER TO ONLY CHECK/PASS '.' ONCE PER NUMBER!
 const numbers = /[1234567890.]/;
 const operators = /[*-+=\/]/
+let equalsClicked;
 
 //I feel like there's something I'm missing here... the problem for me is how to reconcile
 //being able to access properties of either universally rather than needing
@@ -73,13 +74,20 @@ function clearEquation() {
 
 function numClick(e) { //handles click events
 	if (e.target.id == '=') {
-		equation.num2 = +numberDisplay.textContent;
-		numberDisplay.textContent = equation.solution();
+		equation.num2 = numberDisplay.value;
+		numberDisplay.value = equation.solution();
+		equalsClicked = true;
 		clearEquation();
 	} else if (numbers.test(e.target.id)) { 
-			numberDisplay.textContent += e.target.id;
+			if(equalsClicked) {
+				numberDisplay.value = '';
+				numberDisplay.value += e.target.id;
+				equalsClicked = false;
+			} else {
+				numberDisplay.value += e.target.id;
+			}
 	} else {
-			equation.num1 = +numberDisplay.textContent;
+			equation.num1 = numberDisplay.value;
 			equation.operator = e.target.id;			
 			clearDisplay();
 		};
@@ -89,13 +97,19 @@ function numPress(e) { //handles keydown events
 	if ((e.key == '=') || (e.key == 'Enter')) {
 		equation.num2 = +numberDisplay.textContent;
 		numberDisplay.textContent  = equation.solution();
+		equalsClicked = true;
 		clearEquation();
 	} else if (numbers.test(e.key)) { 
-		numberDisplay.textContent += e.key;
+		if(equalsClicked) {
+			numberDisplay.textContent = '';
+			numberDisplay.textContent += e.key;
+			equalsClicked = false;
+		} else {
+			numberDisplay.textContent += e.key;
+		}
 	} else if (operators.test(e.key)) {
 			equation.num1 = +numberDisplay.textContent;
 			equation.operator = e.key;
-			console.log(!equation.num1);
 			clearDisplay();
 	} else {
 			return //makes sure unwanted keypresses are being ignored 
