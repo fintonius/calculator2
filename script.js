@@ -23,9 +23,9 @@
 //	- passes answer to numberDisplay
 // step 4: clear display of equation answer when new number submitted by user
 
-let numberDisplay = document.querySelector('.number-display');
+let numberDisplay = document.getElementById('display');
 function clearDisplay() {
-	numberDisplay.textContent = '';
+	numberDisplay.value = '';
 };
 //NEED TO REMEMBER TO ONLY CHECK/PASS '.' ONCE PER NUMBER!
 const numbers = /[1234567890.]/;
@@ -40,6 +40,8 @@ window.addEventListener('keydown', numPress);
 document.querySelectorAll('.number-button, .operator-button').forEach(btn => {
 	btn.addEventListener('click', numClick)
 });
+
+
 
 //stores the numbers & operator as they are entered then calculates answer when '=' is clicked/pressed
 const equation = {
@@ -93,28 +95,42 @@ function numClick(e) { //handles click events
 		};
 };
 
-function numPress(e) { //handles keydown events
-	if ((e.key == '=') || (e.key == 'Enter')) {
-		equation.num2 = +numberDisplay.textContent;
-		numberDisplay.textContent  = equation.solution();
-		equalsClicked = true;
-		clearEquation();
-	} else if (numbers.test(e.key)) { 
-		if(equalsClicked) {
-			numberDisplay.textContent = '';
-			numberDisplay.textContent += e.key;
-			equalsClicked = false;
-		} else {
-			numberDisplay.textContent += e.key;
-		}
-	} else if (operators.test(e.key)) {
-			equation.num1 = +numberDisplay.textContent;
-			equation.operator = e.key;
-			clearDisplay();
+function numPress(e) {
+	if ((!numbers.test(e.key)) && (!operators.test(e.key))) {
+		return // ignores unwanted keypresses
 	} else {
-			return //makes sure unwanted keypresses are being ignored 
-	};
+		numbers.test(e.key) ? numberDisplay.value += e.key : operatorPress(e);
+	}
 }
+
+function operatorPress(e) {
+				equation.num1 = +numberDisplay.value;
+				equation.operator = e.key;
+				clearDisplay();
+}
+
+// function numPress(e) { //handles keydown events
+// 	if ((e.key == '=') || (e.key == 'Enter')) {
+// 		equation.num2 = +numberDisplay.textContent;
+// 		numberDisplay.textContent  = equation.solution();
+// 		equalsClicked = true;
+// 		clearEquation();
+// 	} else if (numbers.test(e.key)) { 
+// 		if(equalsClicked) {
+// 			numberDisplay.textContent = '';
+// 			numberDisplay.textContent += e.key;
+// 			equalsClicked = false;
+// 		} else {
+// 			numberDisplay.textContent += e.key;
+// 		}
+// 	} else if (operators.test(e.key)) {
+// 			equation.num1 = +numberDisplay.textContent;
+// 			equation.operator = e.key;
+// 			clearDisplay();
+// 	} else {
+// 			return //makes sure unwanted keypresses are being ignored 
+// 	};
+// }
 
 //OR, ONE FUNCTION TO RULE THEM ALL! this was getting too messy and also basically was the same
 //code repeated so it made little sense to try mash it all into 1 function when 2 was cleaner
