@@ -6,6 +6,15 @@ html{
 	box-sizing: inherit;
 }
 
+textarea{
+	resize: none;
+}
+
+@font-face{
+	font-family:'digital-clock-font';
+	src: url('fonts/digital-7.ttf');
+ }
+
 body{
 	display: flex;
 	justify-content: center;
@@ -22,7 +31,7 @@ body{
 	padding: 20px;
 	border: 2px solid rgb(59, 133, 161);
 	border-bottom: 15px solid rgb(49, 114, 138);
-	border-radius: 25px;
+	border-radius: 40px;
 	background-color: lightskyblue;
 	box-shadow: 10px 15px 5px 0px rgb(240, 194, 138);
 }
@@ -49,19 +58,25 @@ body{
 }
 
 .number-display{
+	font-family: digital-clock-font;
 	border-radius: 10px;
 	outline: solid rgb(150, 219, 245) 3px;
 	box-shadow: inset 0px 2px 5px 0px rgb(59, 133, 161);
 	background-color: rgb(248, 248, 248);
-	display: flex;
-	align-items: center;
-	height: 20%;
+	height: 65px;
 	border-top:5px solid grey;
 	border-bottom:5px solid lightgrey;
 	border-left:5px solid grey;
 	border-right:5px solid lightgrey;
 	margin: 5px;
+	padding-top: 3px;
+	padding-bottom: 5px;
+	padding-right: 5px;
+	text-align: right;
 	font-size: 60px;
+	color: rgb(1, 54, 1);
+	text-shadow: 2px 4px 1px rgb(172, 185, 172);
+	text-transform: uppercase;
 }
 
 .buttons{
@@ -113,12 +128,17 @@ body{
 	border-top:  3px solid darkblue;
 	border-bottom: 1px solid darkblue;
 }
+.equals:active{
+	box-shadow: none;
+	border-top:  3px solid darkblue;
+	border-bottom: 1px solid darkblue;
+}
 .number-button{
 	border: 2px solid green;
 	box-shadow: 0px 3px darkgreen;
 }
 
-.operator-button{
+.operator-button, .equals{
 	box-shadow: 0px 3px darkblue;
 	border: 2px solid blue;
 }
