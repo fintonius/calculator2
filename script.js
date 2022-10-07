@@ -7,33 +7,31 @@
 //	- when equals is pressed the answer can be used in next equation
 //	- add character limit to numberDisplay - BEST WAY SEEMS TO BE USING <input>
 
-let numberDisplay = document.getElementById('display');
-function clearDisplay() {
-	numberDisplay.textContent = '';
-};
-
+//	step 6: CLEAN UP README FILE!!!
+let number = [];
 const numbers = /[0-9\.?]/;
 const operators = /[Enter*\-+=\/]/
 let equalsClicked = false; //this feels like a janky way around the equals problem!
+
+let numberDisplay = document.getElementById('display');
+function clearDisplay() {
+	numberDisplay.textContent = '';
+	number = [];
+};
 
 //handling keyboard input
 window.addEventListener('keydown', (e) => 	{
 	if ((!numbers.test(e.key)) && (!operators.test(e.key))) {
 		return // ignores unwanted keypresses
 	} else {
-		numbers.test(e.key) ? numPress(e): operatorPress(e);
+		numbers.test(e.key) ? addNumber(e.key): operatorPress(e);
 	}
+	;
 });
 
-//use a loop to check each keypress before adding it to numberDisplay?
-function numPress(e) { //have a function for equalsClicked & one for number?
- if (equalsClicked) {
-		numberDisplay.textContent = '';
-		numberDisplay.textContent += e.key;
-		equalsClicked = false;
-	} else {
-			numberDisplay.textContent += e.key;
-	}
+function addNumber(e) {
+	((e == '.') && (number.includes('.'))) ? console.log('hell world') : number.push(e);//only allows '.' once
+	numberDisplay.textContent = number.join(''); 
 };
 
 function operatorPress(e) {
@@ -109,4 +107,6 @@ function clearEquation() {
 	equation.num1 = 0;
 	equation.num2 = 0;
 	equation.operator = '';
+	number = [];
 }
+
