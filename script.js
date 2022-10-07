@@ -61,7 +61,8 @@ function numClick(e) { //can this be a loop?
 			numberDisplay.textContent += e.target.id;
 			equalsClicked = false;
 		} else {
-				numberDisplay.textContent += e.target.id;
+			((e.target.id == '.') && (number.includes('.'))) ? console.log('hell world') : number.push(e.target.id);//only allows '.' once
+			numberDisplay.textContent = number.join(''); 
 		}
 };
 
