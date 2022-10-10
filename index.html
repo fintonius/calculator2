@@ -10,14 +10,17 @@
 <body>
 	<div class="calculator">
 		<div class="top-row">
-			<div class="logo">sassy-o</div>
+			<div class="logo">SASSY-O</div>
 			<div class="solar">
 				<svg width="100" height="100">
 						<circle cx="5" cy="5" r="4" stroke="green" stroke-width=".4" fill="yellow"/>
 				</svg>
 			</div>
 		</div>
-		<div class="number-display" id="display"></div>
+		<div class="number-display" >
+			<input type="text" id="equation" value="58008" disabled>
+			<input type="text" id="display" maxlength="9" disabled>
+		</div>
 			<div class="buttons">
 				<div class="row1 row">
 					<button class="operator-button button clear" id="c">C</button>

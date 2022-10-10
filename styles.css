@@ -15,6 +15,15 @@ textarea{
 	src: url('fonts/digital-7.ttf');
  }
 
+ @font-face {
+	font-family: 'eurostile-extendedbold';
+	src: url('fonts/eurostile_extended_black-webfont.woff2') format('woff2'),
+			 url('fonts/eurostile_extended_black-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
 body{
 	display: flex;
 	justify-content: center;
@@ -26,7 +35,7 @@ body{
 	margin-top: 10%;
 	display: flex;
 	flex-direction: column;
-	height: 450px;
+	height: 500px;
 	width: 350px;
 	padding: 20px;
 	border: 2px solid rgb(59, 133, 161);
@@ -37,49 +46,81 @@ body{
 }
 
 .top-row{
+	width: 100%;
 	display: flex;
 	height: 10%;
-	border: 1px solid lightgreen;
 	margin: 5px;
-	margin-bottom: 0px;
-
+	margin-bottom: 10px;
 }
 
 .logo{
-	border: 1px solid lightblue;
-	flex: 1;
-	margin: 1px;
+	font-family: eurostile-extendedbold;
+	font-size: 15px;
+	align-self: center;
+	padding-right: 5px;
+	color: darkslategray;
+	flex: 3;
 }
 
-.solar{
-	border: 1px solid burlywood;
-	flex: 3;
-	margin: 1px;
+.solar{	
+	flex: 1;
+	outline: solid rgb(150, 219, 245) 2px;
+	box-shadow: inset 0px 2px 3px 0px rgb(110, 101, 100);
+	background-color: rgb(233, 210, 204);
+	border-top: 3px solid grey;
+	border-bottom:3px solid lightgrey;
+	border-left:3px solid grey;
+	border-right:3px solid lightgrey;
+	margin: 5px;
 }
 
 .number-display{
-	font-family: digital-clock-font;
+	display: flex;
+	flex-direction: column;
 	border-radius: 10px;
 	outline: solid rgb(150, 219, 245) 3px;
-	box-shadow: inset 0px 2px 5px 0px rgb(59, 133, 161);
-	background-color: rgb(248, 248, 248);
-	height: 65px;
+	box-shadow: inset 0px 2px 5px 0px rgb(91, 121, 94);
+	background-color: rgba(233, 255, 231, 0.747);
+	height: 80px;
+	width: 100%;
 	border-top:5px solid grey;
 	border-bottom:5px solid lightgrey;
 	border-left:5px solid grey;
 	border-right:5px solid lightgrey;
 	margin: 5px;
-	padding-top: 3px;
-	padding-bottom: 5px;
 	padding-right: 5px;
+	margin-bottom: 25px;
 	text-align: right;
-	font-size: 60px;
-	color: rgb(1, 54, 1);
-	text-shadow: 2px 4px 1px rgb(172, 185, 172);
 	text-transform: uppercase;
 }
 
+	#display{
+	color: rgb(1, 54, 1);
+	text-shadow: 2px 4px 1px rgb(172, 185, 172);
+	height: 60px;
+	text-align: right;
+	border: none;
+	font-family: digital-clock-font;
+	line-height: 60px;	
+	font-size: 59px;
+	padding-bottom: 25px;
+
+}
+#equation{
+	color: rgb(1, 54, 1);
+	text-shadow: 1px 2px 1px rgb(172, 185, 172);
+	height: 20px;
+	text-align: right;
+	font-family: digital-clock-font;
+	border: none;
+	flex: 1;
+	line-height: 21px;
+	font-size: 18px;
+	padding-top: 5px;
+}
+
 .buttons{
+	
 	background-color: rgb(125, 208, 238);
 	outline: solid rgb(150, 219, 245) 3px;
 	box-shadow: inset 0px 1px 3px rgb(59, 133, 161);
@@ -102,8 +143,10 @@ body{
 }
 
 .button{
+	font-family: eurostile-extendedbold;
+	color: darkslategray;
 	background-color:paleturquoise;
-	font-size: 30px;
+	font-size: 28px;
 	display: flex;
 	flex: 1;
 	justify-content: center;
