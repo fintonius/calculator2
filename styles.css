@@ -26,12 +26,12 @@ body{
 	margin-top: 10%;
 	display: flex;
 	flex-direction: column;
-	height: 450px;
+	height: 500px;
 	width: 350px;
 	padding: 20px;
 	border: 2px solid rgb(59, 133, 161);
 	border-bottom: 15px solid rgb(49, 114, 138);
-	border-radius: 40px;
+	border-radius: 30px;
 	background-color: lightskyblue;
 	box-shadow: 10px 15px 5px 0px rgb(240, 194, 138);
 }
@@ -39,16 +39,20 @@ body{
 .top-row{
 	display: flex;
 	height: 10%;
-	border: 1px solid lightgreen;
 	margin: 5px;
-	margin-bottom: 0px;
-
+	margin-bottom: 15px;
 }
 
 .logo{
-	border: 1px solid lightblue;
-	flex: 1;
+	font: 28px digital-clock-font;
+	border-radius: 5px;
+	outline: solid rgb(150, 219, 245) 3px;
+	box-shadow: inset 0px 1px 3px 0px rgb(59, 133, 161);
+	background-color: rgba(120, 166, 194, .2);
+	flex: 2;
 	margin: 1px;
+	text-align: center;
+	padding-top: 10px;
 }
 
 .solar{
@@ -79,8 +83,13 @@ body{
 	text-transform: uppercase;
 }
 
+.gap{
+	display: flex;
+	height:25px;
+}
+
 .buttons{
-	background-color: rgb(125, 208, 238);
+	background-color: rgba(120, 166, 194, .2);
 	outline: solid rgb(150, 219, 245) 3px;
 	box-shadow: inset 0px 1px 3px rgb(59, 133, 161);
 	border-top:2px solid rgb(59, 133, 161);

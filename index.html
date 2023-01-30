@@ -17,7 +17,9 @@
 				</svg>
 			</div>
 		</div>
-		<div class="number-display" id="display"></div>
+
+		<div ><input type="number" autofocus class="number-display" id="display" maxlength="10" required></div>
+			<div class="gap"></div>
 			<div class="buttons">
 				<div class="row1 row">
 					<button class="operator-button button clear" id="c">C</button>
@@ -46,7 +48,7 @@
 				<div class="row5 row">
 					<button class="number-button button num0" id="0">0</button>
 					<button class="number-button button period" id=".">.</button>
-					<button class="button equals" onclick="equalClick()" id="=">=</button>
+					<button class="operator-button button equals" id="=">=</button>  
 					<button class="operator-button button add" id="+">+</button>
 				</div>
 		</div>
@@ -55,3 +57,5 @@
 </body>
 <script src="script.js"></script>
 </html>
+
+<!-- onclick="equalClick()" -->

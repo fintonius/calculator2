@@ -11,6 +11,23 @@ the project. I stuck very much with what I knew for the first one so this will p
 me to learn and understand more different approaches to coding. Don't want to get
 stuck/tunnel visioned on just the one way of doing things!
 
+BUGS TO FIX:
+
+- clicking '=' not working - DONE
+- clicking '+' concantenating numbers not adding them - done
+- KEYPRESS: CALCULATED ANSWER NOT BEING RETAINED FOR FURTHER EQUATIONS WHEN '-' PRESSED
+- clicking on buttons with mouse does not work - DONE
+- NO CHARACTER LIMIT; numbers overflow the calculator 
+- IMPLEMENT CHARACTER DELETION
+- OPERATOR CHARACTER NOT APPEARING ON SCREEN
+- COMPLETE EQUATION NOT APPEARING AT TOP OF SCREEN
+- logo font needs to change - DONE
+- logo design finished - DONE
+- SOLAR PANEL NEEDS TO BE FINISHED
+- BUTTON BORDER CHANGES WHEN USING BOTH MOUSE-CLICK AND KEYBOARD PRESSES
+
+
+OLD WHAT TO DO:
 //Pseudo-code & notes:
 // - user inputs number by either/and clicking onscreen buttons and/or keyboard
 //  - the number is shown on the calculator display
@@ -35,8 +52,3 @@ stuck/tunnel visioned on just the one way of doing things!
 //	- calls function to solve equation
 //	- passes answer to numberDisplay
 // step 4: clear display of equation answer when new number submitted by user
-
-
-//I feel like there's something I'm missing here... the problem for me is how to reconcile
-//being able to access properties of either universally rather than needing
-//e.target.id for clickEvents and e.id for keyEvents...
