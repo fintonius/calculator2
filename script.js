@@ -70,28 +70,28 @@ function numClick(e) { //handles click events
 		};
 };
 
-// function numPress(e) { //handles keydown events
-// 	if ((e.key == '=') || (e.key == 'Enter')) {
-// 		equation.num2 = +numberDisplay.textContent;
-// 		numberDisplay.textContent  = equation.solution();
-// 		equalsClicked = true;
-// 		clearEquation();
-// 	} else if (numbers.test(e.key)) { 
-// 		if(equalsClicked) {
-// 			numberDisplay.textContent = '';
-// 			numberDisplay.textContent += e.key;
-// 			equalsClicked = false;
-// 		} else {
-// 			numberDisplay.textContent += e.key;
-// 		}
-// 	} else if (operators.test(e.key)) {
-// 			equation.num1 = +numberDisplay.textContent;
-// 			equation.operator = e.key;
-// 			clearDisplay();
-// 	} else {
-// 			return //makes sure unwanted keypresses are being ignored 
-// 	};
-// }
+function numPress(e) { //handles keydown events
+	if ((e.key == '=') || (e.key == 'Enter')) {
+		equation.num2 = +numberDisplay.textContent;
+		numberDisplay.textContent  = equation.solution();
+		equalsClicked = true;
+		clearEquation();
+	} else if (numbers.test(e.key)) { 
+		if(equalsClicked) {
+			numberDisplay.textContent = '';
+			numberDisplay.textContent += e.key;
+			equalsClicked = false;
+		} else {
+			numberDisplay.textContent += e.key;
+		}
+	} else if (operators.test(e.key)) {
+			equation.num1 = +numberDisplay.textContent;
+			equation.operator = e.key;
+			clearDisplay();
+	} else {
+			return //makes sure unwanted keypresses are being ignored 
+	};
+}
 
 //OR, ONE FUNCTION TO RULE THEM ALL! this was getting too messy and also basically was the same
 //code repeated so it made little sense to try mash it all into 1 function when 2 was cleaner
