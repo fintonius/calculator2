@@ -46,8 +46,8 @@ body{
 .logo{
 	font: 28px digital-clock-font;
 	border-radius: 5px;
-	outline: solid rgb(150, 219, 245) 3px;
-	box-shadow: inset 0px 1px 3px 0px rgb(59, 133, 161);
+	outline: solid rgb(141, 214, 241) 3px;
+	box-shadow: inset 1px 2px 4px 0px rgb(59, 133, 161);
 	background-color: rgba(120, 166, 194, .2);
 	flex: 2;
 	margin: 1px;
@@ -56,10 +56,33 @@ body{
 }
 
 .solar{
-	border: 1px solid burlywood;
+	display: flex;
+	justify-content: flex-end;
 	flex: 3;
-	margin: 1px;
 }
+
+.panel {
+	display: flex;
+	border-radius: 5px;
+	outline: solid rgb(150, 219, 245) 3px;
+	box-shadow: inset 0px 2px 4px 0px rgb(59, 133, 161);
+	background-color: burlywood;
+	height: 80%;
+	width: 40%;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	border-radius: 3px;
+}
+
+td {
+	border-left: solid brown .5px;
+	border-top: solid brown .5px;
+	width: 20px;
+}
+
 
 .number-display{
 	font-family: digital-clock-font;

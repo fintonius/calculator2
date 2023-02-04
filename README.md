@@ -21,7 +21,7 @@ BUGS TO FIX:
 - logo design finished - DONE
 - keypress: calculated answer not being retained for further equations when '-' pressed - DONE
 - LIMIT '.' TO ONCE PER INPUT
-- SOLAR PANEL NEEDS TO BE FINISHED
+- solar panel needs to be finished - DONE
 - IMPLEMENT CHARACTER DELETION
 - OPERATOR CHARACTER NOT APPEARING ON SCREEN
 - COMPLETE EQUATION NOT APPEARING AT TOP OF SCREEN
