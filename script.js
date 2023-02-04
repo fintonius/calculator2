@@ -5,11 +5,14 @@ function clearDisplay() {
 };
 //NEED TO REMEMBER TO ONLY CHECK/PASS '.' ONCE PER NUMBER!
 const numbers = /[1234567890.]/;
-const operators = /[*-+=\/]/
+const operators = /[\-*+=\/]/
 let equalsClicked;
 
+window.addEventListener('keypress', function(e) {
+	console.log(e);
+});
 
-// window.addEventListener('keydown', numPress);
+window.addEventListener('keydown', numPress)
 
 document.querySelectorAll('.number-button, .operator-button').forEach(btn => {
 	btn.addEventListener('click', numClick)
@@ -46,6 +49,10 @@ function clearEquation() {
 	equation.operator = '';
 }
 
+//Have had to separate key-presses and mouse-clicks into individual functions
+//as I couldn't find a way to have 1 function work with both types of input due
+//to clashes between '.target.id' and '.key'.
+
 function numClick(e) { //handles click events
 	// console.log('button CLICK!');
 	if (e.target.id == '=') {
@@ -58,10 +65,12 @@ function numClick(e) { //handles click events
 				numberDisplay.textContent = '';
 				numberDisplay.textContent += e.target.id;
 				equalsClicked = false;
-			} else {
+			} else if (numberDisplay.textContent.length == 9) {
+				return;
+			}//puts character limit on user input	
+			else {
 				let num = e.target.id;
-				console.log(num);
-				numberDisplay += num;
+				numberDisplay.textContent += num;
 			}
 	} else {
 			equation.num1 = +numberDisplay.textContent;
@@ -71,6 +80,9 @@ function numClick(e) { //handles click events
 };
 
 function numPress(e) { //handles keydown events
+	if((e.key == 'Backspace') || (e.key == 'Delete')) {
+		clearDisplay();
+	};
 	if ((e.key == '=') || (e.key == 'Enter')) {
 		equation.num2 = +numberDisplay.textContent;
 		numberDisplay.textContent  = equation.solution();
@@ -81,7 +93,10 @@ function numPress(e) { //handles keydown events
 			numberDisplay.textContent = '';
 			numberDisplay.textContent += e.key;
 			equalsClicked = false;
-		} else {
+		} else if (numberDisplay.textContent.length == 10) {
+			return;
+		}//puts character limit on user input
+		else {
 			numberDisplay.textContent += e.key;
 		}
 	} else if (operators.test(e.key)) {
@@ -91,33 +106,4 @@ function numPress(e) { //handles keydown events
 	} else {
 			return //makes sure unwanted keypresses are being ignored 
 	};
-}
-
-//OR, ONE FUNCTION TO RULE THEM ALL! this was getting too messy and also basically was the same
-//code repeated so it made little sense to try mash it all into 1 function when 2 was cleaner
-// function numPress(e) {
-// 	if (e.type == 'click') { 	//check to see what sort of event called function - click or keydown
-// 			if (e.target.id == '=') {
-// 				console.log('test')
-// 			}
-// 			 else if (numbers.test(e.target.id)) { //handles click events
-// 				numberDisplay.textContent += e.target.id;
-// 			 } else {
-// 				equation['num1'] = +numberDisplay.textContent;
-// 				equation['operator'] = e.target.id;
-// 				clearDisplay();
-// 			}
-// 		} else { 
-// 			if (numbers.test(e.key)) { //handles keydown events
-// 				numberDisplay.textContent += e.key;
-// 			 } else if (operators.test(e.key)) {
-// 				equation['num1'] = +numberDisplay.textContent;
-// 				equation['operator'] = e.key;
-// 				clearDisplay();
-// 			 } else {
-// 				return //makes sure unwanted keypresses are being ignored 
-// 			 };
-// 		}; 
-// 	};
-
-//only alternative I can see is 2 functions: numPress() & numClick()
+};

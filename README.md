@@ -14,17 +14,19 @@ stuck/tunnel visioned on just the one way of doing things!
 BUGS TO FIX:
 
 - clicking '=' not working - DONE
-- clicking '+' concantenating numbers not adding them - done
-- KEYPRESS: CALCULATED ANSWER NOT BEING RETAINED FOR FURTHER EQUATIONS WHEN '-' PRESSED
+- clicking '+' concantenating numbers not adding them - DONE
 - clicking on buttons with mouse does not work - DONE
-- NO CHARACTER LIMIT; numbers overflow the calculator 
+- no character limit; numbers overflow the calculator - DONE
+- logo font needs to change - DONE
+- logo design finished - DONE
+- keypress: calculated answer not being retained for further equations when '-' pressed - DONE
+- LIMIT '.' TO ONCE PER INPUT
+- SOLAR PANEL NEEDS TO BE FINISHED
 - IMPLEMENT CHARACTER DELETION
 - OPERATOR CHARACTER NOT APPEARING ON SCREEN
 - COMPLETE EQUATION NOT APPEARING AT TOP OF SCREEN
-- logo font needs to change - DONE
-- logo design finished - DONE
-- SOLAR PANEL NEEDS TO BE FINISHED
 - BUTTON BORDER CHANGES WHEN USING BOTH MOUSE-CLICK AND KEYBOARD PRESSES
+
 
 
 OLD WHAT TO DO:
